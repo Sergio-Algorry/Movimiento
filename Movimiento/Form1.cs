@@ -17,7 +17,7 @@ namespace Movimiento
         int pasoH = 10;
         int posicionH = 0;
 
-        int pasoV = 5;
+        int pasoV = 10;
         int posicionV = 0;
 
         public Form1()
