@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BackEnd;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,13 +14,6 @@ namespace Movimiento
     public partial class Form1 : Form
     {
         int velocidad = 100;
-
-        int pasoH = 10;
-        int posicionH = 0;
-
-        int pasoV = 10;
-        int posicionV = 0;
-
         public Form1()
         {
             InitializeComponent();
@@ -29,44 +23,32 @@ namespace Movimiento
         {
             btIniciar.Visible = false;
 
-            Label figura = new Label();
-            figura.BackColor = Color.Red;
-            figura.Text = "";
+            Figura F1 = new Figura();
+            F1.PasoH = 10;
+            F1.PasoV = 10;
+            F1.PosicionH = 0;
+            F1.PosicionV = 0;
+            F1.Figu.BackColor = Color.Red;
+            F1.Figu.Text = "";
+            F1.Figu.Height = 50;
+            F1.Figu.Width = 50;
+            Controls.Add(F1.Figu);
 
-            figura.Width = 50;
-            figura.Left = posicionH;
-
-            figura.Height = 50;
-            figura.Top = posicionV;
-
-            Controls.Add(figura);
+            Figura F2 = new Figura();
+            F2.PasoH = 10;
+            F2.PasoV = 5;
+            F2.PosicionH = 250;
+            F2.PosicionV = 250;
+            F2.Figu.BackColor = Color.Blue;
+            F2.Figu.Height = 20;
+            F2.Figu.Width = 20;
+            F2.Figu.Text = "";
+            Controls.Add(F2.Figu);
 
             for (int i = 0; i < 10000; i++)
             {
-                posicionH = posicionH + pasoH;
-                figura.Left = posicionH;
-
-                posicionV = posicionV + pasoV;
-                figura.Top = posicionV;
-
-
-                if (posicionH + figura.Width > this.Width)
-                {
-                    pasoH = -1 * pasoH;
-                }
-                else if (posicionH < 0)
-                {
-                    pasoH = -1 * pasoH;
-                }
-
-                if (posicionV + figura.Height > this.Height)
-                {
-                    pasoV= -1 * pasoV;
-                }
-                else if (posicionV < 0)
-                {
-                    pasoV = -1 * pasoV;
-                }
+                F1.Mover(this.Width, this.Height);
+                F2.Mover(this.Width, this.Height);
 
                 //this.Refresh();
                 await Task.Delay(velocidad);
