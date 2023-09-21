@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,24 @@ namespace BackEnd
         public int PosicionV { get; set; }
 
         public Label Figu { get; set; } = new Label();
+
+        private Random rnd = new Random();
+
+        public void Inicializar(Color aColor, 
+                                int aAnchoVentana, 
+                                int aAltoVentana)
+        {
+            PasoH = rnd.Next(0, 20);
+            PasoV = rnd.Next(0, 20);
+            PosicionH = rnd.Next(0, aAnchoVentana-100);
+            PosicionV = rnd.Next(0, aAltoVentana-100);
+            Figu.BackColor = aColor;
+            Figu.Text = "";
+            Figu.Height = rnd.Next(20, 50);
+            Figu.Width = Figu.Height;
+            //Figu.Width  = rnd.Next(20, 50);
+            Figu.Refresh();
+        }
 
         public void Mover(int AnchoForm, int AltoForm )
         {
