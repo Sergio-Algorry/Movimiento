@@ -21,6 +21,7 @@ namespace Movimiento
 
         private async void btIniciar_Click(object sender, EventArgs e)
         {
+            //btIniciar.Visible = false;
             btIniciar.Visible = false;
 
             Figura F1 = new Figura();
